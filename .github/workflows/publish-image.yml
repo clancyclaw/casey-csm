@@ -1,0 +1,45 @@
+name: Publish image
+
+# Builds the same image as `plow-agents image build` (linux/amd64) and pushes
+# it to GHCR with the repo's own GITHUB_TOKEN, so no personal access token is
+# needed. Run it from the Actions tab; the pinned digest is in the job summary.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Image tag
+        required: true
+        default: v1
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+      - name: Build (linux/amd64)
+        run: |
+          docker build --platform linux/amd64 \
+            --build-arg PLOW_REVISION="${{ github.sha }}" \
+            --label org.opencontainers.image.source="https://github.com/${{ github.repository }}" \
+            --tag "ghcr.io/clancyclaw/casey-csm:${{ inputs.tag }}" .
+      - name: Push and print the pinned reference
+        run: |
+          out=$(docker push "ghcr.io/clancyclaw/casey-csm:${{ inputs.tag }}")
+          echo "$out"
+          digest=$(echo "$out" | grep -oE 'digest: sha256:[0-9a-f]{64}' | tail -1 | cut -d' ' -f2)
+          test -n "$digest"
+          ref="ghcr.io/clancyclaw/casey-csm@${digest}"
+          echo "IMAGE_REF=${ref}"
+          {
+            echo "### Pinned image"
+            echo '```'
+            echo "${ref}"
+            echo '```'
+            echo "Commit: \`${{ github.sha }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
