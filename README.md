@@ -22,7 +22,9 @@ Casey texts you back from its own number. Three quick answers (company, 1 to 3
 customers, your FAQ or "skip") and your first morning brief arrives in under
 two minutes, with a sample account so you can see the whole loop right away.
 
-<!-- TODO: confirm the Plow intake number to show here once 1-click deploy is enabled. -->
+Plow's number is +1 (628) 246-3032, or open the [Index page](https://aiworthusing.com/agent-index/casey-csm) on your phone and tap "Text this agent".
+
+中文試用指南：[TRY.md](TRY.md)
 
 ## Why a CS hire, and why first
 
