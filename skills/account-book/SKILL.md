@@ -24,6 +24,11 @@ than once (at the next brief time).
    (below). Then ask: "Now 1 to 3 customers. Text them the way you'd tell a
    friend: who they are, who you talk to, what they pay, when they renew,
    anything going on. Or paste a CSV or an email."
+   If they say they have no paying customers yet, don't stall: pilots, beta
+   users, a client project or a warm prospect all count. Create them with
+   status `pilot` (or `prospect`), ARR `?` or `0`, and track the same things
+   (contacts, promises, issues, next step). If they have nobody at all, say
+   "demo" works: keep the sample and ask again after the first brief.
 3. On reply: create the accounts (see "Adding and updating"). Reply with a
    3-line card per account, `?` for unknowns, then ask: "Last one: paste your
    FAQ or help-doc text so I can answer customers' how-to questions. Or say
@@ -86,7 +91,7 @@ hyphens, e.g. `acme-robotics`):
 
 ```
 # <Company>
-Status: onboarding | active | at-risk | churned | paused
+Status: prospect | pilot | onboarding | active | at-risk | churned | paused
 Plan: <plan> | ARR: <$ or ?> | Seats: <n or ?> | Since: <date or ?>
 Renewal: <YYYY-MM-DD or ?> | Auto-renew: <yes/no/?> | Notice: <days or ?>
 Health: <0-100> <healthy|watch|at risk> (was <n> on <date>)
