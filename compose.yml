@@ -1,0 +1,15 @@
+# Local run only (`plow-agents deploy --local --line ln_...` or `docker compose up --build -d`).
+# Mirrors plow-pbc/plow-openclaw-agent's compose.yml. A cloud install runs the image
+# with no compose file, so nothing here is needed on Plow.
+services:
+  agent:
+    build: .
+    env_file: ./plow-credentials
+    volumes:
+      # Conversation history, the account book (workspace/casey/), scheduled jobs and
+      # the Agent Index install identity all live here. `docker compose down -v` wipes it.
+      - state:/var/lib/plow
+    # Boot checkpoints chats on SIGTERM; Docker's default 10s cuts that off.
+    stop_grace_period: 35s
+volumes:
+  state:

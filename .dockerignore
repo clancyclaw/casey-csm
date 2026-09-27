@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!prompt/
+!prompt/AGENTS.md
+!skills/
+!skills/**

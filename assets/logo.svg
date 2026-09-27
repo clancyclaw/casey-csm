@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Casey, your first customer success hire</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#0F4C5C"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M136 136h240a40 40 0 0 1 40 40v128a40 40 0 0 1-40 40H236l-64 52v-52h-36a40 40 0 0 1-40-40V176a40 40 0 0 1 40-40z" fill="#FFFFFF"/>
+  <polyline points="140,244 196,244 222,196 258,292 290,220 306,244 372,244" fill="none" stroke="#0F766E" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
